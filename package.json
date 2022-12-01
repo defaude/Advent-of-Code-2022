@@ -4,6 +4,7 @@
   "description": "My ideas and solutions for AoC '22",
   "type": "module",
   "scripts": {
+    "start": "esno challenges/index.ts",
     "test": "vitest"
   },
   "keywords": [
@@ -18,5 +19,8 @@
     "@types/node": "16",
     "prettier": "^2.8.0",
     "vitest": "^0.25.3"
+  },
+  "dependencies": {
+    "esno": "^0.16.3"
   }
 }
