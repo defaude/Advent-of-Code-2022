@@ -1,0 +1,17 @@
+{
+  "name": "@defaude/advent-of-code2022",
+  "version": "1.0.0",
+  "description": "My ideas and solutions for AoC '22",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "advent"
+  ],
+  "author": {
+    "name" : "defaude",
+    "email" : "defaude@gmail.com"
+  },
+  "license": "Unlicense"
+}
