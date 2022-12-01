@@ -1,9 +1,9 @@
 import { describe, expect, it } from 'vitest';
 import { maxCalories, topThreeCalories } from './calorieCount';
-import { getFileLines } from '../getFileLines';
+import { getFileLines } from '../../utility/getFileLines';
 
 describe('01', async () => {
-    const example = await getFileLines('exampleInput.txt', import.meta.url);
+    const example = await getFileLines('01-example.txt', import.meta.url);
 
     describe('maxCalories', () => {
         it('should return the calorie count of the elf carrying the most', async () => {

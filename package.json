@@ -4,8 +4,9 @@
   "description": "My ideas and solutions for AoC '22",
   "type": "module",
   "scripts": {
-    "start": "esno challenges/index.ts",
-    "test": "vitest"
+    "start": "esno index.ts",
+    "test": "vitest run",
+    "watch": "vitest"
   },
   "keywords": [
     "advent"
