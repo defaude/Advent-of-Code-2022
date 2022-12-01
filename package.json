@@ -10,8 +10,11 @@
     "advent"
   ],
   "author": {
-    "name" : "defaude",
-    "email" : "defaude@gmail.com"
+    "name": "defaude",
+    "email": "defaude@gmail.com"
   },
-  "license": "Unlicense"
+  "license": "Unlicense",
+  "devDependencies": {
+    "vitest": "^0.25.3"
+  }
 }
