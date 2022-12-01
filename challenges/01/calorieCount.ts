@@ -1,4 +1,4 @@
-export function calorieCount(lines: string[]): number {
+export const maxCalories = (lines: string[]): number => {
     const elves = [0];
 
     const asNumbers = lines.map((x) => parseInt(x, 10));
@@ -12,4 +12,4 @@ export function calorieCount(lines: string[]): number {
     }
 
     return Math.max(...elves);
-}
+};
