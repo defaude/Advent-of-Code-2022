@@ -4,7 +4,10 @@ import {
     dynamicRockPaperScissors,
     staticRockPaperScissors,
 } from './challenges/02/rockPaperScissors';
-import { sumRucksackDuplicates } from './challenges/03/rucksack';
+import {
+    sumRucksackDuplicates,
+    sumRucksackGroups,
+} from './challenges/03/rucksack';
 
 const input = async (file: string) =>
     getFileLines(`challenges/${file}`, import.meta.url);
@@ -20,3 +23,4 @@ console.info('[CHALLENGE 02-1]', staticRockPaperScissors(input02));
 console.info('[CHALLENGE 02-2]', dynamicRockPaperScissors(input02));
 
 console.info('[CHALLENGE 03-1]', sumRucksackDuplicates(input03));
+console.info('[CHALLENGE 03-2]', sumRucksackGroups(input03));

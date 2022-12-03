@@ -1,3 +1,6 @@
+import chunk from 'lodash/chunk';
+import intersection from 'lodash/intersection';
+
 const UPPER_CASE_REGEX = /^[A-Z]$/;
 const UPPER_CASE_A = 'A'.charCodeAt(0);
 const UPPER_CASE_OFFSET = 27;
@@ -50,4 +53,22 @@ export const sumRucksackDuplicates = (lines: string[]) => {
         .filter((line) => line.trim().length > 0)
         .map(getRucksackDuplicatePriority)
         .reduce((result, line) => result + line, 0);
+};
+
+type Group = [string, string, string];
+
+export const findRucksackGroupBadge = (lines: Group) => {
+    const [one, two, three] = lines.map((line) => line.split(''));
+    return intersection(one, two, three)[0];
+};
+
+export const sumRucksackGroups = (lines: string[]) => {
+    const groups = chunk(
+        lines.filter((line) => line.trim().length > 0),
+        3
+    ) as Group[];
+
+    const badges = groups.map(findRucksackGroupBadge);
+    const badgeValues = badges.map(getRucksackItemPriority);
+    return badgeValues.reduce((result, value) => result + value, 0);
 };

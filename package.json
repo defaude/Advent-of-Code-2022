@@ -17,11 +17,13 @@
   },
   "license": "Unlicense",
   "devDependencies": {
+    "@types/lodash": "^4.14.191",
     "@types/node": "16",
     "prettier": "^2.8.0",
     "vitest": "^0.25.3"
   },
   "dependencies": {
-    "esno": "^0.16.3"
+    "esno": "^0.16.3",
+    "lodash": "^4.17.21"
   }
 }

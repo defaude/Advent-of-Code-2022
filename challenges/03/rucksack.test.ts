@@ -1,14 +1,18 @@
 import { describe, expect, it } from 'vitest';
 import { getFileLines } from '../../utility/getFileLines';
 import {
+    findRucksackGroupBadge,
     getRucksackDuplicate,
     getRucksackItemPriority,
     isUpperCase,
     splitLine,
     sumRucksackDuplicates,
+    sumRucksackGroups,
 } from './rucksack';
 
 describe('03', async () => {
+    const example = await getFileLines('03-example.txt', import.meta.url);
+
     describe('isUpperCase', () => {
         it('should return whether the input is an uppercase letter', () => {
             expect(isUpperCase('A')).toBe(true);
@@ -55,11 +59,21 @@ describe('03', async () => {
         });
     });
 
-    const example = await getFileLines('03-example.txt', import.meta.url);
-
     describe('sumRucksackDuplicates', () => {
         it('should sum the priorities of the items that are duplicates inside of their rucksack', () => {
             expect(sumRucksackDuplicates(example)).toBe(157);
+        });
+    });
+
+    describe('findRucksackGroupBadge', () => {
+        it('should return the item that is present in all lines of the group', function () {
+            expect(findRucksackGroupBadge(['abc', 'ade', 'afg'])).toBe('a');
+        });
+    });
+
+    describe('sumRucksackGroups', () => {
+        it('should find the item for each group of 3 and then sum up all those letters', () => {
+            expect(sumRucksackGroups(example)).toBe(70);
         });
     });
 });
