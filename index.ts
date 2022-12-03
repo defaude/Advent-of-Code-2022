@@ -4,15 +4,19 @@ import {
     dynamicRockPaperScissors,
     staticRockPaperScissors,
 } from './challenges/02/rockPaperScissors';
+import { sumRucksackDuplicates } from './challenges/03/rucksack';
 
 const input = async (file: string) =>
     getFileLines(`challenges/${file}`, import.meta.url);
 
 const input01 = await input('01/01-input.txt');
 const input02 = await input('02/02-input.txt');
+const input03 = await input('03/03-input.txt');
 
 console.info('[CHALLENGE 01-1]', maxCalories(input01));
 console.info('[CHALLENGE 01-2]', topThreeCalories(input01));
 
 console.info('[CHALLENGE 02-1]', staticRockPaperScissors(input02));
 console.info('[CHALLENGE 02-2]', dynamicRockPaperScissors(input02));
+
+console.info('[CHALLENGE 03-1]', sumRucksackDuplicates(input03));
