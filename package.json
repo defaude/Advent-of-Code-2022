@@ -6,7 +6,8 @@
   "scripts": {
     "start": "esno index.ts",
     "test": "vitest run",
-    "watch": "vitest"
+    "watch": "vitest",
+    "format": "prettier -w challenges utility"
   },
   "keywords": [
     "advent"
