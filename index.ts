@@ -16,6 +16,10 @@ import {
     countEnclosedPairs,
     countOverlappingPairs,
 } from './challenges/04/campCleanup';
+import {
+    findStartOfMessage,
+    findStartOfPacket,
+} from './challenges/06/tuningTrouble';
 
 const input = async (file: string) =>
     getFileLines(`challenges/${file}`, import.meta.url);
@@ -25,6 +29,7 @@ const input02 = await input('02/02-input.txt');
 const input03 = await input('03/03-input.txt');
 const input04 = await input('04/04-input.txt');
 const input05 = await input('05/05-input.txt');
+const input06 = await input('06/06-input.txt');
 
 console.info('[CHALLENGE 01-1]', maxCalories(input01));
 console.info('[CHALLENGE 01-2]', topThreeCalories(input01));
@@ -40,3 +45,6 @@ console.info('[CHALLENGE 04-2]', countOverlappingPairs(input04));
 
 console.info('[CHALLENGE 05-1]', sortCratesHanoiStyle(input05));
 console.info('[CHALLENGE 05-2]', sortCrates9001(input05));
+
+console.info('[CHALLENGE 06-1]', findStartOfPacket(input06[0]));
+console.info('[CHALLENGE 06-2]', findStartOfMessage(input06[0]));
