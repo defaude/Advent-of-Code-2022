@@ -20,6 +20,10 @@ import {
     findStartOfMessage,
     findStartOfPacket,
 } from './challenges/06/tuningTrouble';
+import {
+    getDirectoryToDeleteSize,
+    sumDirectoriesBelow100k,
+} from './challenges/07/noSpaceLeftOnDevice';
 
 const input = async (file: string) =>
     getFileLines(`challenges/${file}`, import.meta.url);
@@ -30,6 +34,7 @@ const input03 = await input('03/03-input.txt');
 const input04 = await input('04/04-input.txt');
 const input05 = await input('05/05-input.txt');
 const input06 = await input('06/06-input.txt');
+const input07 = await input('07/07-input.txt');
 
 console.info('[CHALLENGE 01-1]', maxCalories(input01));
 console.info('[CHALLENGE 01-2]', topThreeCalories(input01));
@@ -48,3 +53,6 @@ console.info('[CHALLENGE 05-2]', sortCrates9001(input05));
 
 console.info('[CHALLENGE 06-1]', findStartOfPacket(input06[0]));
 console.info('[CHALLENGE 06-2]', findStartOfMessage(input06[0]));
+
+console.info('[CHALLENGE 07-1]', sumDirectoriesBelow100k(input07));
+console.info('[CHALLENGE 07-2]', getDirectoryToDeleteSize(input07));
