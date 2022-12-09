@@ -7,7 +7,7 @@ import { countEnclosedPairs, countOverlappingPairs } from './challenges/04/campC
 import { findStartOfMessage, findStartOfPacket } from './challenges/06/tuningTrouble';
 import { getDirectoryToDeleteSize, sumDirectoriesBelow100k } from './challenges/07/noSpaceLeftOnDevice';
 import { countVisibleTrees, getMaxScenicScore } from './challenges/08/treeHouse';
-import { countTailPositions } from './challenges/09/ropeBridge';
+import { countMultiKnotTailPositions, countTailPositions } from './challenges/09/ropeBridge';
 
 const input = async (file: string) => getFileLines(`challenges/${file}`, import.meta.url);
 
@@ -46,3 +46,4 @@ console.info('[CHALLENGE 08-1]', countVisibleTrees(input08));
 console.info('[CHALLENGE 08-2]', getMaxScenicScore(input08));
 
 console.info('[CHALLENGE 09-1]', countTailPositions(input09));
+console.info('[CHALLENGE 09-2]', countMultiKnotTailPositions(input09));

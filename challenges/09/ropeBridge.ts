@@ -11,6 +11,11 @@ type RopeState = {
     tailBuffer: Position[];
 };
 
+type KnotsState = {
+    knots: Position[];
+    tailBuffer: Position[];
+};
+
 const lineToMove = (line: string): Move => {
     const [_, direction, amount] = line.match(moveRegex);
     return {
@@ -95,4 +100,43 @@ export const countTailPositions = (lines: string[]) => {
     const moves = lines.map(lineToMove);
 
     return doCountTailPositions(moves);
+};
+
+const updateKnotStateForStep = (state: KnotsState, direction: Direction) => {
+    state.knots[0] = updatePosition(state.knots[0], direction);
+    for (let i = 1; i < state.knots.length; i++) {
+        let current = state.knots[i];
+        let previous = state.knots[i - 1];
+        if (distance(previous, current) > 1) {
+            current = follow(current, previous);
+        }
+        state.knots[i] = current;
+    }
+    state.tailBuffer.push(state.knots[state.knots.length - 1]);
+};
+
+const updateKnotStateForMove = (state: KnotsState, { direction, amount }: Move) => {
+    for (let i = 0; i < amount; i++) {
+        updateKnotStateForStep(state, direction);
+    }
+};
+
+export const countMultiKnotTailPositions = (lines: string[]) => {
+    const state: KnotsState = {
+        knots: [],
+        tailBuffer: [{ x: 0, y: 0 }],
+    };
+
+    for (let i = 0; i < 10; i++) {
+        state.knots.push({ x: 0, y: 0 });
+    }
+
+    const moves = lines.map(lineToMove);
+
+    for (const move of moves) {
+        updateKnotStateForMove(state, move);
+    }
+
+    const asSet = new Set(state.tailBuffer.map(({ x, y }) => `${x} ${y}`));
+    return asSet.size;
 };
