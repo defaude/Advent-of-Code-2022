@@ -36,3 +36,25 @@ export const sumRegisterAtCycles = (lines: string[], cycles: number[], initialVa
 
     return sumUp(valuesAtCycles);
 };
+
+export const paintPixelLetters = (lines: string[]) => {
+    const registerBuffer = getRegisterBuffer(lines, 1).slice(0, -1);
+
+    let output = [];
+
+    for (let i = 0; i < registerBuffer.length; i++) {
+        const value = registerBuffer[i];
+        const currentX = i % 40;
+        if ([currentX - 1, currentX, currentX + 1].includes(value)) {
+            output.push('#');
+        } else {
+            output.push('.');
+        }
+
+        if (currentX === 39 && i !== registerBuffer.length - 1) {
+            output.push('\n');
+        }
+    }
+
+    return output.join('');
+};
