@@ -8,6 +8,7 @@ import { findStartOfMessage, findStartOfPacket } from './challenges/06/tuningTro
 import { getDirectoryToDeleteSize, sumDirectoriesBelow100k } from './challenges/07/noSpaceLeftOnDevice';
 import { countVisibleTrees, getMaxScenicScore } from './challenges/08/treeHouse';
 import { countMultiKnotTailPositions, countTailPositions } from './challenges/09/ropeBridge';
+import { sumRegisterAtCycles } from './challenges/10/cathodeRayTube';
 
 const input = async (file: string) => getFileLines(`challenges/${file}`, import.meta.url);
 
@@ -20,6 +21,7 @@ const input06 = await input('06/06-input.txt');
 const input07 = await input('07/07-input.txt');
 const input08 = await input('08/08-input.txt');
 const input09 = await input('09/09-input.txt');
+const input10 = await input('10/10-input.txt');
 
 console.info('[CHALLENGE 01-1]', maxCalories(input01));
 console.info('[CHALLENGE 01-2]', topThreeCalories(input01));
@@ -47,3 +49,5 @@ console.info('[CHALLENGE 08-2]', getMaxScenicScore(input08));
 
 console.info('[CHALLENGE 09-1]', countTailPositions(input09));
 console.info('[CHALLENGE 09-2]', countMultiKnotTailPositions(input09));
+
+console.info('[CHALLENGE 10-1]', sumRegisterAtCycles(input10, [20, 60, 100, 140, 180, 220], 1));
