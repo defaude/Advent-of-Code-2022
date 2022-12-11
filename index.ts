@@ -4,56 +4,41 @@ import { dynamicRockPaperScissors, staticRockPaperScissors } from './challenges/
 import { sumRucksackDuplicates, sumRucksackGroups } from './challenges/03/rucksack';
 import { sortCrates9001, sortCratesHanoiStyle } from './challenges/05/supplyStacks';
 import { countEnclosedPairs, countOverlappingPairs } from './challenges/04/campCleanup';
-import { findStartOfMessage, findStartOfPacket } from './challenges/06/tuningTrouble';
+import { findStartOfSingleMessage, findStartOfSinglePacket } from './challenges/06/tuningTrouble';
 import { getDirectoryToDeleteSize, sumDirectoriesBelow100k } from './challenges/07/noSpaceLeftOnDevice';
 import { countVisibleTrees, getMaxScenicScore } from './challenges/08/treeHouse';
 import { countMultiKnotTailPositions, countTailPositions } from './challenges/09/ropeBridge';
-import { paintPixelLetters, sumRegisterAtCycles } from './challenges/10/cathodeRayTube';
-import { getMonkeyBusinessLevel } from './challenges/11/monkeyInTheMiddle';
+import { paintPixelLetters, sumRegisterForGivenCycles } from './challenges/10/cathodeRayTube';
+import {
+    getMonkeyBusinessAfter20RoundsWithRelief,
+    getMonkeyBusinessWithoutRelief,
+} from './challenges/11/monkeyInTheMiddle';
+import chalk from 'chalk';
 
-const input = async (file: string) => getFileLines(`challenges/${file}`, import.meta.url);
+const input = async (day: string) => getFileLines(`challenges/${day}/${day}-input.txt`, import.meta.url);
 
-const input01 = await input('01/01-input.txt');
-const input02 = await input('02/02-input.txt');
-const input03 = await input('03/03-input.txt');
-const input04 = await input('04/04-input.txt');
-const input05 = await input('05/05-input.txt');
-const input06 = await input('06/06-input.txt');
-const input07 = await input('07/07-input.txt');
-const input08 = await input('08/08-input.txt');
-const input09 = await input('09/09-input.txt');
-const input10 = await input('10/10-input.txt');
-const input11 = await input('11/11-input.txt');
+const logDay = (day: string, outputs: [unknown, unknown]) => {
+    console.log(chalk.cyan.bold(`Day ${day}`), chalk.cyan(`Part 1 =>`), chalk.yellow.bold(outputs[0]));
+    console.log(chalk.cyan.bold(`Day ${day}`), chalk.cyan(`Part 2 =>`), chalk.yellow.bold(outputs[1]));
+};
 
-console.info('[CHALLENGE 01-1]', maxCalories(input01));
-console.info('[CHALLENGE 01-2]', topThreeCalories(input01));
+type Challenge = (lines: string[]) => unknown;
 
-console.info('[CHALLENGE 02-1]', staticRockPaperScissors(input02));
-console.info('[CHALLENGE 02-2]', dynamicRockPaperScissors(input02));
+const noop: Challenge = () => 'N/A';
 
-console.info('[CHALLENGE 03-1]', sumRucksackDuplicates(input03));
-console.info('[CHALLENGE 03-2]', sumRucksackGroups(input03));
+const runDay = async (day: string, fn1: Challenge = noop, fn2: Challenge = noop) => {
+    const lines = await input(day);
+    logDay(day, [fn1(lines), fn2(lines)]);
+};
 
-console.info('[CHALLENGE 04-1]', countEnclosedPairs(input04));
-console.info('[CHALLENGE 04-2]', countOverlappingPairs(input04));
-
-console.info('[CHALLENGE 05-1]', sortCratesHanoiStyle(input05));
-console.info('[CHALLENGE 05-2]', sortCrates9001(input05));
-
-console.info('[CHALLENGE 06-1]', findStartOfPacket(input06[0]));
-console.info('[CHALLENGE 06-2]', findStartOfMessage(input06[0]));
-
-console.info('[CHALLENGE 07-1]', sumDirectoriesBelow100k(input07));
-console.info('[CHALLENGE 07-2]', getDirectoryToDeleteSize(input07));
-
-console.info('[CHALLENGE 08-1]', countVisibleTrees(input08));
-console.info('[CHALLENGE 08-2]', getMaxScenicScore(input08));
-
-console.info('[CHALLENGE 09-1]', countTailPositions(input09));
-console.info('[CHALLENGE 09-2]', countMultiKnotTailPositions(input09));
-
-console.info('[CHALLENGE 10-1]', sumRegisterAtCycles(input10, [20, 60, 100, 140, 180, 220], 1));
-console.info('[CHALLENGE 10-2]\n', paintPixelLetters(input10));
-
-console.info('[CHALLENGE 11-1]', getMonkeyBusinessLevel(input11, 20));
-console.info('[CHALLENGE 11-2]', getMonkeyBusinessLevel(input11, 10000, false));
+await runDay('01', maxCalories, topThreeCalories);
+await runDay('02', staticRockPaperScissors, dynamicRockPaperScissors);
+await runDay('03', sumRucksackDuplicates, sumRucksackGroups);
+await runDay('04', countEnclosedPairs, countOverlappingPairs);
+await runDay('05', sortCratesHanoiStyle, sortCrates9001);
+await runDay('06', findStartOfSinglePacket, findStartOfSingleMessage);
+await runDay('07', sumDirectoriesBelow100k, getDirectoryToDeleteSize);
+await runDay('08', countVisibleTrees, getMaxScenicScore);
+await runDay('09', countTailPositions, countMultiKnotTailPositions);
+await runDay('10', sumRegisterForGivenCycles, paintPixelLetters);
+await runDay('11', getMonkeyBusinessAfter20RoundsWithRelief, getMonkeyBusinessWithoutRelief);

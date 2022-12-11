@@ -37,10 +37,13 @@ export const sumRegisterAtCycles = (lines: string[], cycles: number[], initialVa
     return sumUp(valuesAtCycles);
 };
 
+export const sumRegisterForGivenCycles = (lines: string[]) =>
+    sumRegisterAtCycles(lines, [20, 60, 100, 140, 180, 220], 1);
+
 export const paintPixelLetters = (lines: string[]) => {
     const registerBuffer = getRegisterBuffer(lines, 1).slice(0, -1);
 
-    let output = [];
+    let output = ['\n'];
 
     for (let i = 0; i < registerBuffer.length; i++) {
         const value = registerBuffer[i];

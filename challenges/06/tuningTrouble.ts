@@ -16,12 +16,14 @@ const findMarker = (size: number) => (line: string) => {
 
 export const findStartOfPacket = findMarker(4);
 
-export const findStartsOfPackets = (lines: string[]) => {
-    return lines.map(findStartOfPacket);
-};
+export const findStartsOfPackets = (lines: string[]) => lines.map(findStartOfPacket);
+
+export const findStartOfSinglePacket = (lines: string[]) => findStartOfPacket(lines[0]);
 
 export const findStartOfMessage = findMarker(14);
 
 export const findStartsOfMessages = (lines: string[]) => {
     return lines.map(findStartOfMessage);
 };
+
+export const findStartOfSingleMessage = (lines: string[]) => findStartsOfMessages(lines)[0];

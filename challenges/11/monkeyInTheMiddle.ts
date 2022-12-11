@@ -91,3 +91,6 @@ export const getMonkeyBusinessLevel = (lines: string[], rounds: number, withReli
 
     return one * two;
 };
+
+export const getMonkeyBusinessAfter20RoundsWithRelief = (lines: string[]) => getMonkeyBusinessLevel(lines, 20);
+export const getMonkeyBusinessWithoutRelief = (lines: string[]) => getMonkeyBusinessLevel(lines, 10e3, false);

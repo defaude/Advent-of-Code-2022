@@ -20,7 +20,8 @@ describe('10', async () => {
 
     describe('paintPixelLetters', () => {
         it('should paint pixels based on the register value', () => {
-            const expectedOutput = `##..##..##..##..##..##..##..##..##..##..
+            const expectedOutput = `
+##..##..##..##..##..##..##..##..##..##..
 ###...###...###...###...###...###...###.
 ####....####....####....####....####....
 #####.....#####.....#####.....#####.....
