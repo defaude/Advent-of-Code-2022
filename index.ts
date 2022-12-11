@@ -9,6 +9,7 @@ import { getDirectoryToDeleteSize, sumDirectoriesBelow100k } from './challenges/
 import { countVisibleTrees, getMaxScenicScore } from './challenges/08/treeHouse';
 import { countMultiKnotTailPositions, countTailPositions } from './challenges/09/ropeBridge';
 import { paintPixelLetters, sumRegisterAtCycles } from './challenges/10/cathodeRayTube';
+import { getMonkeyBusinessLevel } from './challenges/11/monkeyInTheMiddle';
 
 const input = async (file: string) => getFileLines(`challenges/${file}`, import.meta.url);
 
@@ -22,6 +23,7 @@ const input07 = await input('07/07-input.txt');
 const input08 = await input('08/08-input.txt');
 const input09 = await input('09/09-input.txt');
 const input10 = await input('10/10-input.txt');
+const input11 = await input('11/11-input.txt');
 
 console.info('[CHALLENGE 01-1]', maxCalories(input01));
 console.info('[CHALLENGE 01-2]', topThreeCalories(input01));
@@ -52,3 +54,6 @@ console.info('[CHALLENGE 09-2]', countMultiKnotTailPositions(input09));
 
 console.info('[CHALLENGE 10-1]', sumRegisterAtCycles(input10, [20, 60, 100, 140, 180, 220], 1));
 console.info('[CHALLENGE 10-2]\n', paintPixelLetters(input10));
+
+console.info('[CHALLENGE 11-1]', getMonkeyBusinessLevel(input11, 20));
+console.info('[CHALLENGE 11-2]', getMonkeyBusinessLevel(input11, 10000, false));
