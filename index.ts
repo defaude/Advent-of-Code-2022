@@ -1,3 +1,4 @@
+import chalk from 'chalk';
 import { getFileLines } from './utility/getFileLines';
 import { maxCalories, topThreeCalories } from './challenges/01/calorieCount';
 import { dynamicRockPaperScissors, staticRockPaperScissors } from './challenges/02/rockPaperScissors';
@@ -13,7 +14,7 @@ import {
     getMonkeyBusinessAfter20RoundsWithRelief,
     getMonkeyBusinessWithoutRelief,
 } from './challenges/11/monkeyInTheMiddle';
-import chalk from 'chalk';
+import { getMinimumStepsToBestSignal, getShortestHike } from './challenges/12/hillClimbing';
 
 const input = async (day: string) => getFileLines(`challenges/${day}/${day}-input.txt`, import.meta.url);
 
@@ -42,3 +43,4 @@ await runDay('08', countVisibleTrees, getMaxScenicScore);
 await runDay('09', countTailPositions, countMultiKnotTailPositions);
 await runDay('10', sumRegisterForGivenCycles, paintPixelLetters);
 await runDay('11', getMonkeyBusinessAfter20RoundsWithRelief, getMonkeyBusinessWithoutRelief);
+await runDay('12', getMinimumStepsToBestSignal, getShortestHike);
