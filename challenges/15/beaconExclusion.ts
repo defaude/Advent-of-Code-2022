@@ -62,7 +62,7 @@ const scanCave = (lines: string[]): Cave => {
 
 const isBeacon = (position: Position, beacons: Position[]) => beacons.some((beacon) => isAt(position, beacon));
 const isSensor = (position: Position, sensors: Sensor[]) => sensors.some((sensor) => isAt(position, sensor.position));
-const isBlocked = (position: Position, sensors: Sensor[]) => sensors.some((sensor) => sensor.blocks(position));
+const blockedBy = (position: Position, sensors: Sensor[]) => sensors.find((sensor) => sensor.blocks(position));
 
 const sumNoBeaconPositions = (y: number) => (lines: string[]) => {
     const { sensors, beacons, minX, maxX } = scanCave(lines);
@@ -70,7 +70,7 @@ const sumNoBeaconPositions = (y: number) => (lines: string[]) => {
     let blocked = 0;
     for (let x = minX; x <= maxX; x++) {
         const position = { x, y };
-        if (!isBeacon(position, beacons) && !isSensor(position, sensors) && isBlocked(position, sensors)) {
+        if (!isBeacon(position, beacons) && !isSensor(position, sensors) && blockedBy(position, sensors)) {
             blocked++;
         }
     }
@@ -83,20 +83,25 @@ export const sumNoBeaconPositionsInLine2000000 = sumNoBeaconPositions(2000000);
 
 const FREQ_MULTIPLICATOR = 4000000;
 
+const getBlockedUntilX = (position: Position, sensor: Sensor, size: number) => {
+    const dy = Math.abs(sensor.position.y - position.y);
+    return Math.min(size, sensor.position.x + sensor.distance - dy);
+};
+
 const getTuningFrequency = (size: number) => (lines: string[]) => {
     const { sensors } = scanCave(lines);
 
     let beacon: Position;
     all: for (let y = 0; y <= size; y++) {
-        const ySensors = sensors.filter(({ minY, maxY }) => minY <= y && y <= maxY);
-        if (ySensors.length > 0) {
-            for (let x = 0; x <= size; x++) {
-                if (ySensors.some(({ minX, maxX }) => minX <= x && x <= maxX)) {
-                    const position = { x, y };
-                    if (!isBlocked(position, ySensors)) {
-                        beacon = position;
-                        break all;
-                    }
+        for (let x = 0; x <= size; x++) {
+            if (sensors.some(({ minX, maxX }) => minX <= x && x <= maxX)) {
+                const position: Position = { x, y };
+                const blockingSensor = blockedBy(position, sensors);
+                if (blockingSensor) {
+                    x = getBlockedUntilX(position, blockingSensor, size);
+                } else {
+                    beacon = position;
+                    break all;
                 }
             }
         }

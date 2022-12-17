@@ -49,4 +49,4 @@ await runDay('11', getMonkeyBusinessAfter20RoundsWithRelief, getMonkeyBusinessWi
 await runDay('12', getMinimumStepsToBestSignal, getShortestHike);
 await runDay('13', sumCorrectlyOrderedPairsIndices, multiplySeparatorPacketIndices);
 await runDay('14', countRestingSands, countAllTheSands);
-await runDay('15', sumNoBeaconPositionsInLine2000000, () => 'not working properly :(');
+await runDay('15', sumNoBeaconPositionsInLine2000000, getFullSizedTuningFrequency);
