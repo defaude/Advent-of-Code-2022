@@ -18,6 +18,7 @@ import { getMinimumStepsToBestSignal, getShortestHike } from './challenges/12/hi
 import { multiplySeparatorPacketIndices, sumCorrectlyOrderedPairsIndices } from './challenges/13/distressSignal';
 import { countAllTheSands, countRestingSands } from './challenges/14/regolith';
 import { getFullSizedTuningFrequency, sumNoBeaconPositionsInLine2000000 } from './challenges/15/beaconExclusion';
+import { calcMostReleasedPressure } from './challenges/16/proboscideaVolcanium';
 
 const input = async (day: string) => getFileLines(`challenges/${day}/${day}-input.txt`, import.meta.url);
 
@@ -50,3 +51,4 @@ await runDay('12', getMinimumStepsToBestSignal, getShortestHike);
 await runDay('13', sumCorrectlyOrderedPairsIndices, multiplySeparatorPacketIndices);
 await runDay('14', countRestingSands, countAllTheSands);
 await runDay('15', sumNoBeaconPositionsInLine2000000, getFullSizedTuningFrequency);
+await runDay('16', calcMostReleasedPressure);
