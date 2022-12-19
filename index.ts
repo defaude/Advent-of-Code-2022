@@ -19,6 +19,7 @@ import { multiplySeparatorPacketIndices, sumCorrectlyOrderedPairsIndices } from 
 import { countAllTheSands, countRestingSands } from './challenges/14/regolith';
 import { getFullSizedTuningFrequency, sumNoBeaconPositionsInLine2000000 } from './challenges/15/beaconExclusion';
 import { calcMostReleasedPressure } from './challenges/16/proboscideaVolcanium';
+import { exteriorSurfaceArea, surfaceArea } from './challenges/18/boilingBoulders';
 
 const input = async (day: string) => getFileLines(`challenges/${day}/${day}-input.txt`, import.meta.url);
 
@@ -52,3 +53,4 @@ await runDay('13', sumCorrectlyOrderedPairsIndices, multiplySeparatorPacketIndic
 await runDay('14', countRestingSands, countAllTheSands);
 await runDay('15', sumNoBeaconPositionsInLine2000000, getFullSizedTuningFrequency);
 await runDay('16', calcMostReleasedPressure);
+await runDay('18', surfaceArea);
