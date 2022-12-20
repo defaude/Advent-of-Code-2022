@@ -56,7 +56,7 @@ const getRawNode = (field: Field, { x, y }: Coordinate): Node | undefined => {
 const fullCost = ({ distance, heuristic }: Node): number => distance + heuristic;
 
 const estimateDistance = ({ x: x1, y: y1 }: Coordinate, { x: x2, y: y2 }: Coordinate): number =>
-    Math.sqrt(Math.abs(x1 - x2)) + Math.sqrt(Math.abs(y1 - y2));
+    Math.abs(x1 - x2) + Math.abs(y1 - y2);
 
 const takeCheapestNode = (nodes: Map<string, Node>): Node => {
     let currentCost = Infinity;
