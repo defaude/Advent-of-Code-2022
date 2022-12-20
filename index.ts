@@ -19,22 +19,28 @@ import { multiplySeparatorPacketIndices, sumCorrectlyOrderedPairsIndices } from 
 import { countAllTheSands, countRestingSands } from './challenges/14/regolith';
 import { getFullSizedTuningFrequency, sumNoBeaconPositionsInLine2000000 } from './challenges/15/beaconExclusion';
 import { calcMostReleasedPressure } from './challenges/16/proboscideaVolcanium';
-import { exteriorSurfaceArea, surfaceArea } from './challenges/18/boilingBoulders';
+import { surfaceArea } from './challenges/18/boilingBoulders';
 
-const input = async (day: string) => getFileLines(`challenges/${day}/${day}-input.txt`, import.meta.url);
+const timers = process.env.TIMERS_ACTIVE === 'true';
 
-const logDay = (day: string, outputs: [unknown, unknown]) => {
-    console.log(chalk.cyan.bold(`Day ${day}`), chalk.cyan(`Part 1 =>`), chalk.yellow.bold(outputs[0]));
-    console.log(chalk.cyan.bold(`Day ${day}`), chalk.cyan(`Part 2 =>`), chalk.yellow.bold(outputs[1]));
-};
+const getInput = async (day: string) => getFileLines(`challenges/${day}/${day}-input.txt`, import.meta.url);
 
 type Challenge = (lines: string[]) => unknown;
 
 const noop: Challenge = () => 'N/A';
 
+const runPart = (day: string, part: number, fn = noop, input: string[]) => {
+    const timeKey = `${day}-${part}`;
+    if (timers) console.time(timeKey);
+    const result = fn(input);
+    if (timers) console.timeEnd(timeKey);
+    console.log(chalk.cyan.bold(`Day ${day}`), chalk.cyan(`Part ${part} =>`), chalk.yellow.bold(result));
+};
+
 const runDay = async (day: string, fn1: Challenge = noop, fn2: Challenge = noop) => {
-    const lines = await input(day);
-    logDay(day, [fn1(lines), fn2(lines)]);
+    const lines = await getInput(day);
+    runPart(day, 1, fn1, lines);
+    runPart(day, 2, fn1, lines);
 };
 
 await runDay('01', maxCalories, topThreeCalories);

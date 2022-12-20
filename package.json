@@ -5,6 +5,7 @@
   "type": "module",
   "scripts": {
     "start": "esno index.ts",
+    "time": "TIMERS_ACTIVE=true esno index.ts",
     "test": "vitest run",
     "watch": "vitest",
     "format": "prettier -w challenges utility"
