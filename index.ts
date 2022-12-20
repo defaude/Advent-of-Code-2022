@@ -40,7 +40,7 @@ const runPart = (day: string, part: number, fn = noop, input: string[]) => {
 const runDay = async (day: string, fn1: Challenge = noop, fn2: Challenge = noop) => {
     const lines = await getInput(day);
     runPart(day, 1, fn1, lines);
-    runPart(day, 2, fn1, lines);
+    runPart(day, 2, fn2, lines);
 };
 
 await runDay('01', maxCalories, topThreeCalories);
