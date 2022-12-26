@@ -132,7 +132,7 @@ class Walker {
         }, 0);
         const pos = this.currentPosition;
         const minutes = ('' + this.remainingMinutes).padStart(2);
-        console.log(`At ${pos} / ${minutes} minutes => ${message}. Releasing ${released}`);
+        // console.log(`At ${pos} / ${minutes} minutes => ${message}. Releasing ${released}`);
 
         this.remainingMinutes--;
         this.releasedPressure += released;
