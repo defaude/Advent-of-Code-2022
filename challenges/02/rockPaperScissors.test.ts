@@ -1,9 +1,6 @@
-import { describe, expect, it } from 'vitest';
+import { describe, expect, it } from 'bun:test';
 import { getFileLines } from '../../utility/getFileLines';
-import {
-    dynamicRockPaperScissors,
-    staticRockPaperScissors,
-} from './rockPaperScissors';
+import { dynamicRockPaperScissors, staticRockPaperScissors } from './rockPaperScissors';
 
 describe('02', async () => {
     const example = await getFileLines('02-example.txt', import.meta.url);

@@ -4,9 +4,7 @@ type Range = { from: number; to: number };
 type RangePair = [Range, Range];
 
 const toPair = (line: string): RangePair => {
-    const [_, from1, to1, from2, to2] = line
-        .match(rgx)
-        .map((x) => parseInt(x, 10));
+    const [_, from1, to1, from2, to2] = line.match(rgx).map((x) => parseInt(x, 10));
     return [
         { from: from1, to: to1 },
         { from: from2, to: to2 },

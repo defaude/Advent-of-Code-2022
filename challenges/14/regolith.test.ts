@@ -1,4 +1,4 @@
-import { describe, expect, it } from 'vitest';
+import { describe, expect, it } from 'bun:test';
 import { getFileLines } from '../../utility/getFileLines';
 import { countAllTheSands, countRestingSands } from './regolith';
 

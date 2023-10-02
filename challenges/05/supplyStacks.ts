@@ -45,9 +45,7 @@ export const sortCratesHanoiStyle = (lines: string[]) => {
     const emptyLineIndex = lines.indexOf('');
 
     const crates = lines.slice(0, emptyLineIndex - 1).map(parseCrates);
-    const stacks = zip(...crates).map((stack) =>
-        stack.filter((item) => !!item)
-    );
+    const stacks = zip(...crates).map((stack) => stack.filter((item) => !!item));
 
     const moves = lines.slice(emptyLineIndex + 1).map(parseMoves);
 
@@ -60,9 +58,7 @@ export const sortCrates9001 = (lines: string[]) => {
     const emptyLineIndex = lines.indexOf('');
 
     const crates = lines.slice(0, emptyLineIndex - 1).map(parseCrates);
-    const stacks = zip(...crates).map((stack) =>
-        stack.filter((item) => !!item)
-    );
+    const stacks = zip(...crates).map((stack) => stack.filter((item) => !!item));
 
     const moves = lines.slice(emptyLineIndex + 1).map(parseMoves);
 

@@ -1,8 +1,5 @@
-import { describe, expect, it } from 'vitest';
-import {
-    getDirectoryToDeleteSize,
-    sumDirectoriesBelow100k,
-} from './noSpaceLeftOnDevice';
+import { describe, expect, it } from 'bun:test';
+import { getDirectoryToDeleteSize, sumDirectoriesBelow100k } from './noSpaceLeftOnDevice';
 import { getFileLines } from '../../utility/getFileLines';
 
 describe('07', async () => {

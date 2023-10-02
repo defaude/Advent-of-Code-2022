@@ -28,8 +28,7 @@ const roundScores = {
     },
 };
 
-const getRoundScore = ([opponent, player]: Round) =>
-    roundScores[opponent][player];
+const getRoundScore = ([opponent, player]: Round) => roundScores[opponent][player];
 
 const moveScores = {
     [PlayerMove.ROCK]: 1,
@@ -67,21 +66,16 @@ const movesForOutcome = {
 
 type DynamicRound = [OpponentMove, DesiredOutcome];
 
-const getMoveForOutcome = ([opponent, desiredOutcome]: DynamicRound) =>
-    movesForOutcome[opponent][desiredOutcome];
+const getMoveForOutcome = ([opponent, desiredOutcome]: DynamicRound) => movesForOutcome[opponent][desiredOutcome];
 
 const lineRgx = /^[ABC] [XYZ]$/;
 
 const getRounds = <T extends Round | DynamicRound>(lines: string[]) => {
-    return lines
-        .filter((line) => lineRgx.test(line))
-        .map((line) => line.split(' ')) as unknown as T[];
+    return lines.filter((line) => lineRgx.test(line)).map((line) => line.split(' ')) as unknown as T[];
 };
 
 const getRoundScoreSum = (rounds: Round[]) =>
-    rounds
-        .map((round) => getRoundScore(round) + getMoveScore(round[1]))
-        .reduce((result, score) => result + score, 0);
+    rounds.map((round) => getRoundScore(round) + getMoveScore(round[1])).reduce((result, score) => result + score, 0);
 
 export const staticRockPaperScissors = (lines: string[]) => {
     const rounds = getRounds<Round>(lines);
@@ -89,9 +83,6 @@ export const staticRockPaperScissors = (lines: string[]) => {
 };
 
 export const dynamicRockPaperScissors = (lines: string[]) => {
-    const rounds = getRounds<DynamicRound>(lines).map<Round>((round) => [
-        round[0],
-        getMoveForOutcome(round),
-    ]);
+    const rounds = getRounds<DynamicRound>(lines).map<Round>((round) => [round[0], getMoveForOutcome(round)]);
     return getRoundScoreSum(rounds);
 };

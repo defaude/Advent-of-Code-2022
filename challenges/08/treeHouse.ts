@@ -1,8 +1,7 @@
 type Row = number[];
 type Tree = { row: number; column: number };
 
-const getRows = (lines: string[]) =>
-    lines.map((line) => line.split('').map((tree) => parseInt(tree, 10)));
+const getRows = (lines: string[]) => lines.map((line) => line.split('').map((tree) => parseInt(tree, 10)));
 
 const applyToInnerTrees = (rows: Row[], fn: (tree: Tree) => unknown) => {
     const rowCount = rows.length - 1;

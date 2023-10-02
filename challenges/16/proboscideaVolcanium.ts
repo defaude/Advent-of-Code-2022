@@ -1,5 +1,9 @@
 class Valve {
-    constructor(public name: string, public flowRate: number, public connectedNames: string[]) {}
+    constructor(
+        public name: string,
+        public flowRate: number,
+        public connectedNames: string[],
+    ) {}
 
     connected(valves: VM) {
         return this.connectedNames.map((name) => valves.get(name));
@@ -81,7 +85,7 @@ class Walker {
         private valves: VM,
         private currentPosition = 'AA',
         private remainingMinutes = 30,
-        private opened: string[] = []
+        private opened: string[] = [],
     ) {}
 
     private currentValve() {

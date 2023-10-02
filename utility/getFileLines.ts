@@ -1,22 +1,8 @@
-import { createReadStream } from 'node:fs';
 import { getFilePath } from './getFilePath';
-import readline from 'node:readline';
 
-const crlfDelay = Infinity;
+export const getFileLines = async (file: string, metaUrl: string): Promise<string[]> => {
+    const bunFile = Bun.file(getFilePath(file, metaUrl));
+    const text = await bunFile.text();
 
-export const getFileLines = async (
-    file: string,
-    metaUrl: string
-): Promise<string[]> => {
-    const result: string[] = [];
-
-    const filePath = getFilePath(file, metaUrl);
-    const input = createReadStream(filePath);
-    const rl = readline.createInterface({ input, crlfDelay });
-
-    for await (const line of rl) {
-        result.push(line);
-    }
-
-    return result;
+    return text.split(/\r?\n/).slice(0, -1);
 };
