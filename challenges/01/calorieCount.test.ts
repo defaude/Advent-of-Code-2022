@@ -1,4 +1,4 @@
-import { describe, expect, it } from 'vitest';
+import { describe, expect, it } from 'bun:test';
 import { maxCalories, topThreeCalories } from './calorieCount';
 import { getFileLines } from '../../utility/getFileLines';
 

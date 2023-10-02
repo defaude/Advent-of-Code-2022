@@ -65,7 +65,7 @@ export const findRucksackGroupBadge = (lines: Group) => {
 export const sumRucksackGroups = (lines: string[]) => {
     const groups = chunk(
         lines.filter((line) => line.trim().length > 0),
-        3
+        3,
     ) as Group[];
 
     const badges = groups.map(findRucksackGroupBadge);

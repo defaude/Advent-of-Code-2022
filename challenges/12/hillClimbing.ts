@@ -92,7 +92,7 @@ const aStar = (
     field: Field,
     startCoords: Coordinate,
     endCoords: Coordinate,
-    viableChildren: (node: Node, field: Field) => Node[]
+    viableChildren: (node: Node, field: Field) => Node[],
 ): Node[] => {
     const toInspect: Map<string, Node> = new Map();
     const startNode = getRawNode(field, startCoords);

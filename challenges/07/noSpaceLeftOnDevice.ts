@@ -53,9 +53,7 @@ export const getNodes = (lines: string[]): RawNode[] => {
 };
 
 const getDirectorySize = (dir: RawDir, allFiles: RawFile[]): number => {
-    const matchingFileSizes = allFiles
-        .filter(({ path }) => path.startsWith(dir.path))
-        .map(({ size }) => size);
+    const matchingFileSizes = allFiles.filter(({ path }) => path.startsWith(dir.path)).map(({ size }) => size);
 
     return sumUp(matchingFileSizes);
 };

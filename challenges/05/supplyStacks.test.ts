@@ -1,10 +1,6 @@
-import { describe, expect, it } from 'vitest';
+import { describe, expect, it } from 'bun:test';
 import { getFileLines } from '../../utility/getFileLines';
-import {
-    parseCrates,
-    sortCrates9001,
-    sortCratesHanoiStyle,
-} from './supplyStacks';
+import { parseCrates, sortCrates9001, sortCratesHanoiStyle } from './supplyStacks';
 
 describe('05', async () => {
     const example = await getFileLines('05-example.txt', import.meta.url);
